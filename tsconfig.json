@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "paths": {
+            "@/*": ["./registry/new-york-v4/*", "./storybook-utils/*"]
+        }
+    },
+    "include": [
+        "registry/**/*.ts",
+        "registry/**/*.tsx",
+        "stories/**/*.ts",
+        "stories/**/*.tsx",
+        "storybook-utils/**/*.ts",
+        "storybook-utils/**/*.tsx",
+        ".storybook/**/*.ts",
+        ".storybook/**/*.tsx"
+    ]
+}
