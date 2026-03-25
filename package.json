@@ -7,10 +7,6 @@
     "./vite": {
       "types": "./src/vite/index.ts",
       "default": "./src/vite/index.ts"
-    },
-    "./i18n": {
-      "types": "./src/i18n/index.ts",
-      "default": "./src/i18n/index.ts"
     }
   },
   "scripts": {
@@ -21,7 +17,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.2",
-    "@inertiajs/react": "3.0.0-beta.6",
+    "@inertiajs/react": "^3.0.0",
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-themes": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
