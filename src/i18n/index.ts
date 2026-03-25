@@ -2,29 +2,17 @@ import { useLaravelReactI18n } from "laravel-react-i18n";
 export { LaravelReactI18nProvider } from "laravel-react-i18n";
 
 /**
- * Laravel-style __() translation hook.
+ * Translation hook matching Laravel's __() helper.
  *
  * @example
- * import { useTranslations } from '@hardimpactdev/craft-ui-react/i18n';
+ * import { useTranslation } from '@hardimpactdev/craft-ui-react/i18n';
  *
  * function MyComponent() {
- *     const __ = useTranslations();
+ *     const { __ } = useTranslation();
  *     return <p>{__('Welcome')}</p>;
  * }
  */
-export function useTranslations() {
-    const { t } = useLaravelReactI18n();
-    return t;
-}
-
-/**
- * Pluralized translation hook.
- *
- * @example
- * const __choice = useTranslationChoice();
- * <p>{__choice('apples', count)}</p>
- */
-export function useTranslationChoice() {
-    const { tChoice } = useLaravelReactI18n();
-    return tChoice;
+export function useTranslation() {
+    const { t, tChoice, ...rest } = useLaravelReactI18n();
+    return { __: t, __choice: tChoice, ...rest };
 }
