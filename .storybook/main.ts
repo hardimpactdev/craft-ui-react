@@ -40,6 +40,11 @@ const config: StorybookConfig = {
 
         config.server = config.server || {};
         config.server.allowedHosts = true;
+        config.server.hmr = {
+            host: 'craft-ui-react.beast',
+            protocol: 'wss',
+            clientPort: 443,
+        };
 
         return config;
     },
