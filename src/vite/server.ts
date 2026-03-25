@@ -14,16 +14,15 @@ export function getServerConfig(mode: string): ServerOptions {
     try {
         const url = new URL(appUrl);
         const certsPath = `${homedir()}/.config/orbit/certs`;
-        const config: ServerOptions = { host: url.hostname };
+        const appCert = `${certsPath}/apps/${url.hostname}.crt`;
+        const appKey = `${certsPath}/apps/${url.hostname}.key`;
 
-        if (existsSync(`${certsPath}/wildcard.crt`)) {
-            config.https = {
-                key: readFileSync(`${certsPath}/wildcard.key`),
-                cert: readFileSync(`${certsPath}/wildcard.crt`),
-            };
-        }
-
-        return config;
+        return {
+            host: url.hostname,
+            https: existsSync(appCert)
+                ? { key: readFileSync(appKey), cert: readFileSync(appCert) }
+                : undefined,
+        };
     } catch {
         return { host: "0.0.0.0" };
     }
