@@ -39,7 +39,7 @@
     "@inertiajs/vite": "3.0.0-beta.6",
     "@laravel/vite-plugin-wayfinder": "^0.1.0",
     "@tailwindcss/vite": "^4.2.0",
-    "@vitejs/plugin-react": "^6.0.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "laravel-vite-plugin": "^3.0.0"
   },
   "peerDependenciesMeta": {
