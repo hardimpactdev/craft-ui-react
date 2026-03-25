@@ -38,6 +38,9 @@ const config: StorybookConfig = {
             '@': path.resolve(__dirname, '../storybook-utils'),
         };
 
+        config.server = config.server || {};
+        config.server.allowedHosts = true;
+
         return config;
     },
 };
