@@ -1,5 +1,6 @@
-// This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
+import { fileURLToPath } from 'node:url';
+import { readFileSync, existsSync } from 'node:fs';
+import { homedir } from 'node:os';
 import type { StorybookConfig } from '@storybook/react-vite';
 import tailwindcss from '@tailwindcss/vite';
 import path, { dirname } from 'node:path';
@@ -41,10 +42,14 @@ const config: StorybookConfig = {
         config.server = config.server || {};
         config.server.allowedHosts = true;
 
-        // Disable HMR when behind a reverse proxy (beast deployment)
-        // HMR isn't needed for a preview server — restart the service to pick up changes
-        if (process.env.DISABLE_HMR) {
-            config.server.hmr = false;
+        // Use orbit's wildcard certs for HTTPS if available
+        // This enables HMR WebSocket (wss://) to work behind a reverse proxy
+        const certsPath = `${homedir()}/.config/orbit/certs`;
+        if (existsSync(`${certsPath}/wildcard.crt`)) {
+            config.server.https = {
+                key: readFileSync(`${certsPath}/wildcard.key`),
+                cert: readFileSync(`${certsPath}/wildcard.crt`),
+            };
         }
 
         return config;
