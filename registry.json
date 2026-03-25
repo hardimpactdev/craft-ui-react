@@ -316,6 +316,19 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "use-translation",
+      "type": "registry:hook",
+      "dependencies": ["laravel-react-i18n"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york-v4/hooks/use-translation.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "use-appearance",
       "type": "registry:hook",
       "dependencies": [],

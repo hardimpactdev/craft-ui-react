@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { join } from "node:path";
 import type { PluginOption } from "vite-plus";
@@ -10,10 +10,27 @@ import type { CraftConfigOptions } from "./types.ts";
  * then imports it via file:// URL for ESM compatibility.
  */
 async function importFromConsumer(pkg: string) {
-    const pkgDir = join(process.cwd(), "node_modules", pkg);
-    const pkgJson = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf-8"));
+    const nodeModules = join(process.cwd(), "node_modules");
 
-    // Resolve entry: exports.".".import > exports.".".default > module > main
+    // Handle subpath imports like "laravel-react-i18n/vite"
+    const parts = pkg.startsWith("@")
+        ? [pkg.split("/").slice(0, 2).join("/"), ...pkg.split("/").slice(2)]
+        : pkg.split("/");
+
+    const pkgName = parts[0];
+    const subpath = parts.slice(1).join("/");
+
+    if (subpath) {
+        // Direct file import — resolve from node_modules
+        const filePath = join(nodeModules, pkgName, subpath);
+        // Try with .js extension if no extension provided
+        const resolved = existsSync(filePath) ? filePath : `${filePath}.js`;
+        return import(pathToFileURL(resolved).href);
+    }
+
+    // Package root import — read package.json for entry point
+    const pkgDir = join(nodeModules, pkgName);
+    const pkgJson = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf-8"));
     const exports = pkgJson.exports?.["."];
     const entry =
         (typeof exports === "string" ? exports : exports?.import ?? exports?.default)
