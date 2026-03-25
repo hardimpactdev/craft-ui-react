@@ -7,6 +7,10 @@
     "./vite": {
       "types": "./src/vite/index.ts",
       "default": "./src/vite/index.ts"
+    },
+    "./i18n": {
+      "types": "./src/i18n/index.ts",
+      "default": "./src/i18n/index.ts"
     }
   },
   "scripts": {
@@ -40,12 +44,10 @@
     "@laravel/vite-plugin-wayfinder": "^0.1.0",
     "@tailwindcss/vite": "^4.2.0",
     "@vitejs/plugin-react": "^6.0.0",
-    "laravel-react-i18n": "^2.0.5",
     "laravel-vite-plugin": "^3.0.0"
   },
   "peerDependenciesMeta": {
-    "vite-plugin-run": { "optional": true },
-    "laravel-react-i18n": { "optional": true }
+    "vite-plugin-run": { "optional": true }
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",

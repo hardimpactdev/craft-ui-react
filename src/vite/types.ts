@@ -35,8 +35,20 @@ export interface CraftConfigOptions {
               formVariants?: boolean;
           };
 
-    /** Enable i18n support (laravel-react-i18n), default: false */
-    i18n?: boolean;
+    /**
+     * Enable i18n support. When true, injects initI18n() into app entry.
+     * The __ function becomes available via: import { __ } from '@hardimpactdev/craft-ui-react/i18n'
+     */
+    i18n?:
+        | boolean
+        | {
+              /** Active locale (default: "en") */
+              locale?: string;
+              /** Fallback locale (default: "en") */
+              fallbackLocale?: string;
+              /** Glob pattern for lang files (default: "/lang/*.json") */
+              langPath?: string;
+          };
 
     /** Additional Vite plugins to include */
     plugins?: PluginOption[];
