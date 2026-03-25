@@ -74,6 +74,14 @@ export async function getPlugins(
         );
     }
 
+    // i18n plugin (opt-in with `i18n: true`)
+    if (options.i18n) {
+        const { default: i18n } = await importFromConsumer(
+            "laravel-react-i18n/vite",
+        );
+        plugins.push(i18n());
+    }
+
     // Artisan runners (dev only)
     const runners = await getArtisanRunners();
     if (runners) {
