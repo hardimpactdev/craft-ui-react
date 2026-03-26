@@ -742,11 +742,18 @@
       "name": "auth-login-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-login",
-        "@craft/auth-types"
+        "button",
+        "checkbox",
+        "input",
+        "label",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/text-link",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -761,11 +768,17 @@
       "name": "auth-register-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-register",
-        "@craft/auth-types"
+        "button",
+        "input",
+        "label",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/text-link",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -780,11 +793,16 @@
       "name": "auth-forgot-password-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-forgot-password",
-        "@craft/auth-types"
+        "button",
+        "input",
+        "label",
+        "@craft/input-error",
+        "@craft/text-link",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -799,11 +817,16 @@
       "name": "auth-reset-password-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-reset-password",
-        "@craft/auth-types"
+        "button",
+        "input",
+        "label",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -818,11 +841,15 @@
       "name": "auth-confirm-password-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-confirm-password",
-        "@craft/auth-types"
+        "button",
+        "label",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -837,10 +864,13 @@
       "name": "auth-verify-email-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/auth-verify-email"
+        "button",
+        "@craft/text-link",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -855,11 +885,15 @@
       "name": "auth-two-factor-challenge-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "input-otp"
       ],
       "registryDependencies": [
-        "@craft/auth-two-factor-challenge",
-        "@craft/auth-types"
+        "button",
+        "input",
+        "input-otp",
+        "@craft/input-error",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -875,13 +909,6 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/auth-login",
-        "@craft/auth-register",
-        "@craft/auth-forgot-password",
-        "@craft/auth-reset-password",
-        "@craft/auth-confirm-password",
-        "@craft/auth-verify-email",
-        "@craft/auth-two-factor-challenge",
         "@craft/auth-login-page",
         "@craft/auth-register-page",
         "@craft/auth-forgot-password-page",
@@ -1120,8 +1147,13 @@
         "@inertiajs/react"
       ],
       "registryDependencies": [
-        "@craft/settings-profile",
-        "@craft/settings-types"
+        "button",
+        "input",
+        "label",
+        "@craft/delete-user",
+        "@craft/heading",
+        "@craft/input-error",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -1136,12 +1168,19 @@
       "name": "settings-security-page",
       "type": "registry:block",
       "dependencies": [
-        "@inertiajs/react"
+        "@inertiajs/react",
+        "lucide-react"
       ],
       "registryDependencies": [
-        "@craft/settings-security",
-        "@craft/settings-types",
-        "@craft/use-two-factor-auth"
+        "button",
+        "label",
+        "@craft/heading",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/two-factor-recovery-codes",
+        "@craft/two-factor-setup-modal",
+        "@craft/use-two-factor-auth",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -1159,7 +1198,9 @@
         "@inertiajs/react"
       ],
       "registryDependencies": [
-        "@craft/settings-appearance"
+        "@craft/appearance-tabs",
+        "@craft/heading",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -1175,9 +1216,6 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/settings-profile",
-        "@craft/settings-security",
-        "@craft/settings-appearance",
         "@craft/settings-profile-page",
         "@craft/settings-security-page",
         "@craft/settings-appearance-page",
@@ -1199,7 +1237,8 @@
         "@inertiajs/react"
       ],
       "registryDependencies": [
-        "@craft/dashboard"
+        "@craft/placeholder-pattern",
+        "@craft/inertia-types"
       ],
       "files": [
         {
@@ -1215,8 +1254,6 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "card",
-        "@craft/placeholder-pattern",
         "@craft/dashboard-page"
       ],
       "files": [
