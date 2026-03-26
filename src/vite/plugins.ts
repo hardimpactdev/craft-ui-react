@@ -97,6 +97,12 @@ export async function getPlugins(
         plugins.push(craftI18nPlugin(options.i18n));
     }
 
+    // Agentation (enabled by default, opt-out with `agentation: false`)
+    if (options.agentation !== false) {
+        const { craftAgentationPlugin } = await import("./agentation-plugin.ts");
+        plugins.push(craftAgentationPlugin());
+    }
+
     // Artisan runners (dev only)
     const runners = await getArtisanRunners();
     if (runners) {

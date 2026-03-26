@@ -50,6 +50,14 @@ export interface CraftConfigOptions {
               langPath?: string;
           };
 
+    /**
+     * Agentation integration (enabled by default). Auto-mounts the Agentation
+     * component in dev mode with annotation count tracking for the toolbar.
+     * Requires `agentation` npm package as a dev dependency.
+     * Set to `false` to disable.
+     */
+    agentation?: boolean;
+
     /** Additional Vite plugins to include */
     plugins?: PluginOption[];
 
