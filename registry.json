@@ -318,7 +318,9 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "use-translation",
       "type": "registry:hook",
-      "dependencies": ["laravel-react-i18n"],
+      "dependencies": [
+        "laravel-react-i18n"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -918,7 +920,8 @@
         "@craft/auth-confirm-password-page",
         "@craft/auth-verify-email-page",
         "@craft/auth-two-factor-challenge-page",
-        "@craft/inertia-types"
+        "@craft/inertia-types",
+        "@craft/auth-layout"
       ],
       "files": [
         {
@@ -1219,7 +1222,8 @@
         "@craft/settings-security-page",
         "@craft/settings-appearance-page",
         "@craft/use-two-factor-auth",
-        "@craft/inertia-types"
+        "@craft/inertia-types",
+        "@craft/settings-layout"
       ],
       "files": [
         {
@@ -1253,7 +1257,8 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/dashboard-page"
+        "@craft/dashboard-page",
+        "@craft/app-sidebar-layout"
       ],
       "files": [
         {
