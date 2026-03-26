@@ -1,7 +1,7 @@
 import { Head, usePage, router } from '@inertiajs/react';
 import VerifyEmailPage from '@/components/pages/auth/verify-email';
-import { send } from '@/routes/verification';
-import { destroy } from '@/routes/logout';
+import { send } from '../../routes/verification';
+import { logout } from '../../routes';
 
 export default function VerifyEmail() {
     const { status } = usePage().props;
@@ -12,7 +12,7 @@ export default function VerifyEmail() {
             <VerifyEmailPage
                 status={status}
                 onResend={() => router.post(send.url())}
-                onLogout={() => router.post(destroy.url())}
+                onLogout={() => router.post(logout.url())}
             />
         </>
     );

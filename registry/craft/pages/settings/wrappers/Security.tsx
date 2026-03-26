@@ -1,8 +1,8 @@
 import { Head, useForm, usePage } from '@inertiajs/react';
 import SecurityPage from '@/components/pages/settings/security';
 import type { PasswordForm } from '@/components/pages/settings/types';
-import { update } from '@/actions/App/Http/Controllers/Settings/SecurityController';
-import { useTwoFactorAuth } from '@/hooks/use-two-factor-auth';
+import { update } from '../../actions/App/Http/Controllers/Settings/SecurityController';
+import { useTwoFactorAuth } from '../../hooks/use-two-factor-auth';
 
 export default function Security() {
     const { auth, twoFactorEnabled, canManageTwoFactor } = usePage().props;

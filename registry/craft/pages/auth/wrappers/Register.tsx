@@ -1,7 +1,7 @@
 import { Head, useForm } from '@inertiajs/react';
 import RegisterPage from '@/components/pages/auth/register';
 import type { RegisterForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/register';
+import { store } from '../../routes/register';
 
 export default function Register() {
     const form = useForm<RegisterForm>({ name: '', email: '', password: '', password_confirmation: '' });

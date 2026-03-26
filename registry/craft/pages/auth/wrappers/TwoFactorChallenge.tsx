@@ -1,7 +1,7 @@
 import { Head, useForm } from '@inertiajs/react';
 import TwoFactorChallengePage from '@/components/pages/auth/two-factor-challenge';
 import type { TwoFactorForm, TwoFactorRecoveryForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/two-factor.login';
+import { store } from '../../routes/two-factor/login';
 
 export default function TwoFactorChallenge() {
     const codeForm = useForm<TwoFactorForm>({ code: '' });

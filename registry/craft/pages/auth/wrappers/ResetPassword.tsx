@@ -1,7 +1,7 @@
 import { Head, useForm, usePage } from '@inertiajs/react';
 import ResetPasswordPage from '@/components/pages/auth/reset-password';
 import type { ResetPasswordForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/password.update';
+import { update } from '../../routes/password';
 
 export default function ResetPassword() {
     const { token, email } = usePage().props;
@@ -15,7 +15,7 @@ export default function ResetPassword() {
                 email={email}
                 errors={form.errors}
                 processing={form.processing}
-                onSubmit={(data) => form.transform(() => data).post(store.url())}
+                onSubmit={(data) => form.transform(() => data).post(update.url())}
             />
         </>
     );

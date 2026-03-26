@@ -1,7 +1,7 @@
 import { Head, useForm, usePage } from '@inertiajs/react';
 import ForgotPasswordPage from '@/components/pages/auth/forgot-password';
 import type { ForgotPasswordForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/password.email';
+import { email } from '../../routes/password';
 
 export default function ForgotPassword() {
     const { status } = usePage().props;
@@ -14,7 +14,7 @@ export default function ForgotPassword() {
                 status={status}
                 errors={form.errors}
                 processing={form.processing}
-                onSubmit={(data) => form.transform(() => data).post(store.url())}
+                onSubmit={(data) => form.transform(() => data).post(email.url())}
             />
         </>
     );

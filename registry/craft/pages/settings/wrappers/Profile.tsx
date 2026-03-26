@@ -1,8 +1,8 @@
 import { Head, useForm, usePage, router } from '@inertiajs/react';
 import ProfilePage from '@/components/pages/settings/profile';
 import type { ProfileForm } from '@/components/pages/settings/types';
-import { update, destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController';
-import { send } from '@/routes/verification';
+import { update, destroy } from '../../actions/App/Http/Controllers/Settings/ProfileController';
+import { send } from '../../routes/verification';
 
 export default function Profile() {
     const { auth, mustVerifyEmail, status } = usePage().props;

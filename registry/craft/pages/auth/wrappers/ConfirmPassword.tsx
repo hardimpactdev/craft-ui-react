@@ -1,7 +1,7 @@
 import { Head, useForm } from '@inertiajs/react';
 import ConfirmPasswordPage from '@/components/pages/auth/confirm-password';
 import type { ConfirmPasswordForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/password.confirm';
+import { store } from '../../routes/password/confirm';
 
 export default function ConfirmPassword() {
     const form = useForm<ConfirmPasswordForm>({ password: '' });

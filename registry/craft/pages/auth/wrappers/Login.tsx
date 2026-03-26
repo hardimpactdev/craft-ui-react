@@ -1,7 +1,7 @@
 import { Head, useForm, usePage } from '@inertiajs/react';
 import LoginPage from '@/components/pages/auth/login';
 import type { LoginForm } from '@/components/pages/auth/types';
-import { store } from '@/routes/login';
+import { store } from '../../routes/login';
 
 export default function Login() {
     const { status, canResetPassword, canRegister } = usePage().props;
