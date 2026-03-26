@@ -1,1 +1,1 @@
-export { default } from '../../registry/new-york-v4/components/input-error';
+export { default } from '../../registry/craft/components/input-error';

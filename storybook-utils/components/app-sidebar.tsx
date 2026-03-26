@@ -1,1 +1,1 @@
-export { AppSidebar } from '../../registry/new-york-v4/components/app-sidebar';
+export { AppSidebar } from '../../registry/craft/components/app-sidebar';

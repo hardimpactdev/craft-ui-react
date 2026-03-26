@@ -1,1 +1,1 @@
-export { default } from '../../../registry/new-york-v4/blocks/app-sidebar-layout';
+export { default } from '../../../registry/craft/blocks/app-sidebar-layout';

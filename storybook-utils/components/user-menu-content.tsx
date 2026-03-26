@@ -1,1 +1,1 @@
-export { UserMenuContent } from '../../registry/new-york-v4/components/user-menu-content';
+export { UserMenuContent } from '../../registry/craft/components/user-menu-content';

@@ -11,7 +11,7 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "paths": {
-            "@/*": ["./registry/new-york-v4/*", "./storybook-utils/*"]
+            "@/*": ["./registry/craft/*", "./storybook-utils/*"]
         }
     },
     "include": [

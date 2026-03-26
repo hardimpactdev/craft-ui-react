@@ -1,1 +1,1 @@
-export { NavMain } from '../../registry/new-york-v4/components/nav-main';
+export { NavMain } from '../../registry/craft/components/nav-main';

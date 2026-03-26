@@ -1,4 +1,4 @@
-export * from '../../registry/new-york-v4/lib/types';
+export * from '../../registry/craft/lib/types';
 
 export type User = {
     id: number;

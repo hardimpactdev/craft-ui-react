@@ -40,6 +40,44 @@ export function Head({ title, children }: { title?: string; children?: React.Rea
     return null;
 }
 
+export function Form({
+    children,
+    className,
+    onSubmit,
+    ...props
+}: {
+    children?:
+        | React.ReactNode
+        | ((
+              form: {
+                  processing: boolean;
+                  errors: Record<string, string>;
+                  recentlySuccessful: boolean;
+                  clearErrors: () => void;
+              },
+          ) => React.ReactNode);
+    className?: string;
+    onSubmit?: (formData: FormData) => void | Promise<void>;
+} & React.FormHTMLAttributes<HTMLFormElement>) {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        onSubmit?.(new FormData(event.currentTarget));
+    };
+
+    return (
+        <form className={className} onSubmit={handleSubmit} {...props}>
+            {typeof children === 'function'
+                ? children({
+                      processing: false,
+                      errors: {},
+                      recentlySuccessful: false,
+                      clearErrors: () => {},
+                  })
+                : children}
+        </form>
+    );
+}
+
 // Mock usePage
 const defaultPageProps = {
     auth: {

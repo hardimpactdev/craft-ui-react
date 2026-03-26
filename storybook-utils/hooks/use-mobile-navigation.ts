@@ -1,1 +1,1 @@
-export * from '../../registry/new-york-v4/hooks/use-mobile-navigation';
+export * from '../../registry/craft/hooks/use-mobile-navigation';

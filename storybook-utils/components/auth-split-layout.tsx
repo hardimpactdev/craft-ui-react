@@ -1,1 +1,1 @@
-export { default } from '../../registry/new-york-v4/blocks/auth-split-layout';
+export { default } from '../../registry/craft/blocks/auth-split-layout';

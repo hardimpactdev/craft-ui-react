@@ -1,1 +1,1 @@
-export { default } from '../../registry/new-york-v4/blocks/app-layout';
+export { default } from '../../registry/craft/blocks/app-layout';

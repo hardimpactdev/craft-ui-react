@@ -15,7 +15,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-shell.tsx",
+          "path": "registry/craft/components/app-shell.tsx",
           "type": "registry:component"
         }
       ]
@@ -30,7 +30,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-content.tsx",
+          "path": "registry/craft/components/app-content.tsx",
           "type": "registry:component"
         }
       ]
@@ -52,7 +52,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-sidebar.tsx",
+          "path": "registry/craft/components/app-sidebar.tsx",
           "type": "registry:component"
         }
       ]
@@ -69,7 +69,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-sidebar-header.tsx",
+          "path": "registry/craft/components/app-sidebar-header.tsx",
           "type": "registry:component"
         }
       ]
@@ -98,7 +98,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-header.tsx",
+          "path": "registry/craft/components/app-header.tsx",
           "type": "registry:component"
         }
       ]
@@ -113,7 +113,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-logo.tsx",
+          "path": "registry/craft/components/app-logo.tsx",
           "type": "registry:component"
         }
       ]
@@ -126,7 +126,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/components/app-logo-icon.tsx",
+          "path": "registry/craft/components/app-logo-icon.tsx",
           "type": "registry:component"
         }
       ]
@@ -144,7 +144,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/nav-main.tsx",
+          "path": "registry/craft/components/nav-main.tsx",
           "type": "registry:component"
         }
       ]
@@ -162,7 +162,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/nav-footer.tsx",
+          "path": "registry/craft/components/nav-footer.tsx",
           "type": "registry:component"
         }
       ]
@@ -185,7 +185,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/nav-user.tsx",
+          "path": "registry/craft/components/nav-user.tsx",
           "type": "registry:component"
         }
       ]
@@ -201,7 +201,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/user-info.tsx",
+          "path": "registry/craft/components/user-info.tsx",
           "type": "registry:component"
         }
       ]
@@ -220,7 +220,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/user-menu-content.tsx",
+          "path": "registry/craft/components/user-menu-content.tsx",
           "type": "registry:component"
         }
       ]
@@ -237,7 +237,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/breadcrumbs.tsx",
+          "path": "registry/craft/components/breadcrumbs.tsx",
           "type": "registry:component"
         }
       ]
@@ -250,7 +250,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/components/heading.tsx",
+          "path": "registry/craft/components/heading.tsx",
           "type": "registry:component"
         }
       ]
@@ -263,7 +263,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/components/input-error.tsx",
+          "path": "registry/craft/components/input-error.tsx",
           "type": "registry:component"
         }
       ]
@@ -278,7 +278,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/components/text-link.tsx",
+          "path": "registry/craft/components/text-link.tsx",
           "type": "registry:component"
         }
       ]
@@ -296,7 +296,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/components/appearance-tabs.tsx",
+          "path": "registry/craft/components/appearance-tabs.tsx",
           "type": "registry:component"
         }
       ]
@@ -309,7 +309,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/placeholder-pattern.tsx",
+          "path": "registry/craft/ui/placeholder-pattern.tsx",
           "type": "registry:ui"
         }
       ]
@@ -322,7 +322,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-translation.ts",
+          "path": "registry/craft/hooks/use-translation.ts",
           "type": "registry:hook"
         }
       ]
@@ -335,7 +335,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-appearance.tsx",
+          "path": "registry/craft/hooks/use-appearance.tsx",
           "type": "registry:hook"
         }
       ]
@@ -348,7 +348,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-initials.tsx",
+          "path": "registry/craft/hooks/use-initials.tsx",
           "type": "registry:hook"
         }
       ]
@@ -361,7 +361,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-mobile.tsx",
+          "path": "registry/craft/hooks/use-mobile.tsx",
           "type": "registry:hook"
         }
       ]
@@ -374,7 +374,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-mobile-navigation.ts",
+          "path": "registry/craft/hooks/use-mobile-navigation.ts",
           "type": "registry:hook"
         }
       ]
@@ -389,7 +389,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-current-url.ts",
+          "path": "registry/craft/hooks/use-current-url.ts",
           "type": "registry:hook"
         }
       ]
@@ -405,7 +405,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york-v4/lib/types.ts",
+          "path": "registry/craft/lib/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -424,7 +424,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/app-sidebar-layout.tsx",
+          "path": "registry/craft/blocks/app-sidebar-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -442,7 +442,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/app-header-layout.tsx",
+          "path": "registry/craft/blocks/app-header-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -458,7 +458,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/app-layout.tsx",
+          "path": "registry/craft/blocks/app-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -468,10 +468,14 @@
       "name": "auth-layout",
       "type": "registry:block",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "@craft/auth-simple-layout",
+        "@craft/auth-split-layout",
+        "@craft/auth-card-layout"
+      ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/auth-layout.tsx",
+          "path": "registry/craft/blocks/auth-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -482,13 +486,12 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/auth-layout",
         "@craft/app-logo-icon",
         "card"
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/auth-card-layout.tsx",
+          "path": "registry/craft/blocks/auth-card-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -499,12 +502,11 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/auth-layout",
-        "@craft/app-logo"
+        "@craft/app-logo-icon"
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/auth-simple-layout.tsx",
+          "path": "registry/craft/blocks/auth-simple-layout.tsx",
           "type": "registry:block"
         }
       ]
@@ -515,13 +517,383 @@
       "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
-        "@craft/auth-layout",
         "@craft/app-logo-icon",
         "@craft/placeholder-pattern"
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/auth-split-layout.tsx",
+          "path": "registry/craft/blocks/auth-split-layout.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-types",
+      "type": "registry:lib",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "password-input",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "input",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/components/password-input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "use-clipboard",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/hooks/use-clipboard.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-login",
+      "type": "registry:block",
+      "dependencies": [
+        "checkbox",
+        "button",
+        "input",
+        "label",
+        "lucide-react",
+        "separator"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/password-input",
+        "@craft/text-link",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/login.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/login.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-register",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "input",
+        "label",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/password-input",
+        "@craft/text-link",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/register.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/register.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-forgot-password",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "input",
+        "label",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/text-link",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/forgot-password.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/forgot-password.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-reset-password",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "input",
+        "label",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/password-input",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/reset-password.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/reset-password.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-confirm-password",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "label",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/password-input",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/confirm-password.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/confirm-password.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-verify-email",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/text-link"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/verify-email.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/verify-email.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-two-factor-challenge",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "input",
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-layout",
+        "@craft/auth-types",
+        "@craft/input-error"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/two-factor-challenge.tsx",
+          "type": "registry:block",
+          "target": "components/pages/auth/two-factor-challenge.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-login-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-login",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/Login.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/Login.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-register-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-register",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/Register.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/Register.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-forgot-password-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-forgot-password",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/ForgotPassword.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/ForgotPassword.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-reset-password-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-reset-password",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/ResetPassword.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/ResetPassword.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-confirm-password-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-confirm-password",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/ConfirmPassword.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/ConfirmPassword.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-verify-email-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-verify-email"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/VerifyEmail.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/VerifyEmail.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-two-factor-challenge-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/auth-two-factor-challenge",
+        "@craft/auth-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/wrappers/TwoFactorChallenge.tsx",
+          "type": "registry:block",
+          "target": "pages/auth/TwoFactorChallenge.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "auth-pages",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "@craft/auth-login",
+        "@craft/auth-register",
+        "@craft/auth-forgot-password",
+        "@craft/auth-reset-password",
+        "@craft/auth-confirm-password",
+        "@craft/auth-verify-email",
+        "@craft/auth-two-factor-challenge",
+        "@craft/auth-login-page",
+        "@craft/auth-register-page",
+        "@craft/auth-forgot-password-page",
+        "@craft/auth-reset-password-page",
+        "@craft/auth-confirm-password-page",
+        "@craft/auth-verify-email-page",
+        "@craft/auth-two-factor-challenge-page",
+        "@craft/inertia-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/auth/types.ts",
           "type": "registry:block"
         }
       ]
@@ -540,8 +912,318 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/settings-layout.tsx",
+          "path": "registry/craft/blocks/settings-layout.tsx",
           "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-types",
+      "type": "registry:lib",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "delete-user",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "dialog",
+        "input",
+        "label"
+      ],
+      "registryDependencies": [
+        "@craft/heading",
+        "@craft/input-error",
+        "@craft/password-input"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/components/delete-user.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "two-factor-recovery-codes",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "card",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/input-error",
+        "@craft/use-clipboard"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/components/two-factor-recovery-codes.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "two-factor-setup-modal",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "dialog",
+        "input",
+        "input-otp",
+        "label",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@craft/input-error",
+        "@craft/use-clipboard",
+        "@craft/use-appearance"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/components/two-factor-setup-modal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "two-factor-section",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "separator"
+      ],
+      "registryDependencies": [
+        "@craft/heading",
+        "@craft/two-factor-setup-modal",
+        "@craft/two-factor-recovery-codes"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/components/two-factor-section.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-profile",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "input",
+        "label",
+        "separator"
+      ],
+      "registryDependencies": [
+        "@craft/delete-user",
+        "@craft/heading",
+        "@craft/input-error",
+        "@craft/settings-types",
+        "@craft/text-link"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/profile.tsx",
+          "type": "registry:block",
+          "target": "components/pages/settings/profile.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-security",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "label",
+        "separator"
+      ],
+      "registryDependencies": [
+        "@craft/heading",
+        "@craft/input-error",
+        "@craft/password-input",
+        "@craft/two-factor-section",
+        "@craft/settings-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/security.tsx",
+          "type": "registry:block",
+          "target": "components/pages/settings/security.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-appearance",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "@craft/appearance-tabs",
+        "@craft/heading"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/appearance.tsx",
+          "type": "registry:block",
+          "target": "components/pages/settings/appearance.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "use-two-factor-auth",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/hooks/use-two-factor-auth.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-two-factor-auth.ts"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "inertia-types",
+      "type": "registry:lib",
+      "dependencies": [
+        "@inertiajs/core"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/craft/types/inertia.d.ts",
+          "type": "registry:lib",
+          "target": "types/inertia.d.ts"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-profile-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/settings-profile",
+        "@craft/settings-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/wrappers/Profile.tsx",
+          "type": "registry:block",
+          "target": "pages/settings/Profile.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-security-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/settings-security",
+        "@craft/settings-types",
+        "@craft/use-two-factor-auth"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/wrappers/Security.tsx",
+          "type": "registry:block",
+          "target": "pages/settings/Security.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-appearance-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/settings-appearance"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/wrappers/Appearance.tsx",
+          "type": "registry:block",
+          "target": "pages/settings/Appearance.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "settings-pages",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "@craft/settings-profile",
+        "@craft/settings-security",
+        "@craft/settings-appearance",
+        "@craft/settings-profile-page",
+        "@craft/settings-security-page",
+        "@craft/settings-appearance-page",
+        "@craft/use-two-factor-auth",
+        "@craft/inertia-types"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/settings/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dashboard-page",
+      "type": "registry:block",
+      "dependencies": [
+        "@inertiajs/react"
+      ],
+      "registryDependencies": [
+        "@craft/dashboard"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/wrappers/Dashboard.tsx",
+          "type": "registry:block",
+          "target": "pages/Dashboard.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dashboard",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "card",
+        "@craft/placeholder-pattern",
+        "@craft/dashboard-page"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/pages/dashboard.tsx",
+          "type": "registry:block",
+          "target": "components/pages/dashboard.tsx"
         }
       ]
     }

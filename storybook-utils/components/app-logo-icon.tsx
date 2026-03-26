@@ -1,1 +1,1 @@
-export { default } from '../../registry/new-york-v4/components/app-logo-icon';
+export { default } from '../../registry/craft/components/app-logo-icon';

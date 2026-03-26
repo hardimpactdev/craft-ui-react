@@ -3,3 +3,4 @@ storybook-static/
 public/r/
 *.log
 .DS_Store
+dist/

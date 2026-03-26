@@ -1,1 +1,1 @@
-export { default } from '../../registry/new-york-v4/components/text-link';
+export { default } from '../../registry/craft/components/text-link';

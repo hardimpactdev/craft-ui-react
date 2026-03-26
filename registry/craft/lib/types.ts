@@ -20,10 +20,15 @@ export type AppLayoutProps = {
 };
 
 export type AppVariant = 'header' | 'sidebar';
+export type AuthLayoutVariant = 'simple' | 'split' | 'card';
+export type FormErrors<T> = Partial<Record<keyof T, string>>;
 
 export type AuthLayoutProps = {
     children?: ReactNode;
     name?: string;
     title?: string;
     description?: string;
+    logo?: ReactNode;
+    logoLink?: string;
+    variant?: AuthLayoutVariant;
 };

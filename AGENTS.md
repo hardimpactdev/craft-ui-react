@@ -12,7 +12,7 @@ This repo serves three roles from one codebase:
 
 ## How the registry works
 
-Components follow the [shadcn registry format](https://ui.shadcn.com/docs/registry). Source files live in `registry/new-york-v4/`. Running `npm run build` (shadcn build) reads `registry.json` and outputs individual JSON files to `public/r/` with inlined source content.
+Components follow the [shadcn registry format](https://ui.shadcn.com/docs/registry). Source files live in `registry/craft/`. Running `npm run build` (shadcn build) reads `registry.json` and outputs individual JSON files to `public/r/` with inlined source content.
 
 Consumer projects configure `components.json`:
 ```json
@@ -34,7 +34,7 @@ This resolves the full dependency tree — craft components from `@craft`, shadc
 
 ```
 registry/                        # Registry source (what gets built to JSON)
-  new-york-v4/
+  craft/
     components/                  # App components (17) — app-shell, nav-main, etc.
     blocks/                      # Layout blocks (8) — sidebar layout, auth layouts, etc.
     hooks/                       # React hooks (5) — use-appearance, use-initials, etc.
@@ -75,7 +75,7 @@ The `@` alias points to `storybook-utils/` via `.storybook/main.ts`. Registry co
 
 ## Adding a new craft component
 
-1. Create the component in `registry/new-york-v4/components/my-component.tsx`
+1. Create the component in `registry/craft/components/my-component.tsx`
 2. Add the item to `registry.json` with `name`, `type`, `dependencies`, `registryDependencies`, `files`
 3. Use `@craft/` prefix for cross-references to other craft items, bare names for shadcn items
 4. Create a re-export in `storybook-utils/components/my-component.tsx`

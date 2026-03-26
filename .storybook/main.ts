@@ -33,7 +33,7 @@ const config: StorybookConfig = {
         config.resolve = config.resolve || {};
         config.resolve.alias = {
             ...config.resolve.alias,
-            '@inertiajs/react': path.resolve(__dirname, 'inertia-react-mock.ts'),
+            '@inertiajs/react': path.resolve(__dirname, 'inertia-react-mock.tsx'),
             '@': path.resolve(__dirname, '../storybook-utils'),
         };
 

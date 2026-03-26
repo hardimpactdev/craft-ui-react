@@ -1,1 +1,1 @@
-export * from '../../registry/new-york-v4/hooks/use-current-url';
+export * from '../../registry/craft/hooks/use-current-url';

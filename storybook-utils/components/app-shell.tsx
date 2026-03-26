@@ -1,1 +1,1 @@
-export { AppShell } from '../../registry/new-york-v4/components/app-shell';
+export { AppShell } from '../../registry/craft/components/app-shell';
