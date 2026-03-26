@@ -17,8 +17,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 interface TwoFactorSetupModalProps {
-    open: boolean;
-    onOpenChange: (open: boolean) => void;
+    isOpen: boolean;
+    onClose: () => void;
     qrCodeSvg?: string;
     manualSetupKey?: string;
     recoveryCodes?: string[];
@@ -33,8 +33,8 @@ interface TwoFactorSetupModalProps {
 type TwoFactorSetupMode = 'setup' | 'verify';
 
 export default function TwoFactorSetupModal({
-    open,
-    onOpenChange,
+    isOpen,
+    onClose,
     qrCodeSvg,
     manualSetupKey,
     errors,
@@ -49,16 +49,16 @@ export default function TwoFactorSetupModal({
     const [copiedText, copy] = useClipboard();
 
     useEffect(() => {
-        if (open && onFetchSetupData) {
+        if (isOpen && onFetchSetupData) {
             onFetchSetupData();
         }
 
-        if (!open) {
+        if (!isOpen) {
             setCode('');
         }
 
         setMode(confirmationRequired ? 'verify' : 'setup');
-    }, [open, confirmationRequired, onFetchSetupData]);
+    }, [isOpen, confirmationRequired, onFetchSetupData]);
 
     const handleEnable = () => {
         onEnable?.();
@@ -78,7 +78,7 @@ export default function TwoFactorSetupModal({
     };
 
     return (
-        <Dialog open={open} onOpenChange={onOpenChange}>
+        <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
             <DialogContent className="max-w-md">
                 <DialogHeader>
                     <DialogTitle className="inline-flex items-center gap-2">
