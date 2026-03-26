@@ -545,11 +545,12 @@
       "name": "password-input",
       "type": "registry:component",
       "dependencies": [
-        "button",
-        "input",
         "lucide-react"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
       "files": [
         {
           "path": "registry/craft/components/password-input.tsx",
@@ -575,14 +576,14 @@
       "name": "auth-login",
       "type": "registry:block",
       "dependencies": [
-        "checkbox",
-        "button",
-        "input",
-        "label",
-        "lucide-react",
-        "separator"
+        "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "checkbox",
+        "input",
+        "label",
+        "separator",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/password-input",
@@ -602,12 +603,12 @@
       "name": "auth-register",
       "type": "registry:block",
       "dependencies": [
-        "button",
-        "input",
-        "label",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "input",
+        "label",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/password-input",
@@ -627,12 +628,12 @@
       "name": "auth-forgot-password",
       "type": "registry:block",
       "dependencies": [
-        "button",
-        "input",
-        "label",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "input",
+        "label",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/text-link",
@@ -651,12 +652,12 @@
       "name": "auth-reset-password",
       "type": "registry:block",
       "dependencies": [
-        "button",
-        "input",
-        "label",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "input",
+        "label",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/password-input",
@@ -675,11 +676,11 @@
       "name": "auth-confirm-password",
       "type": "registry:block",
       "dependencies": [
-        "button",
-        "label",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "label",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/password-input",
@@ -698,10 +699,10 @@
       "name": "auth-verify-email",
       "type": "registry:block",
       "dependencies": [
-        "button",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/text-link"
@@ -719,12 +720,13 @@
       "name": "auth-two-factor-challenge",
       "type": "registry:block",
       "dependencies": [
-        "button",
-        "input",
         "input-otp",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "input",
+        "input-otp",
         "@craft/auth-layout",
         "@craft/auth-types",
         "@craft/input-error"
@@ -961,13 +963,12 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "delete-user",
       "type": "registry:component",
-      "dependencies": [
+      "dependencies": [],
+      "registryDependencies": [
         "button",
         "dialog",
         "input",
-        "label"
-      ],
-      "registryDependencies": [
+        "label",
         "@craft/heading",
         "@craft/input-error",
         "@craft/password-input"
@@ -984,11 +985,11 @@
       "name": "two-factor-recovery-codes",
       "type": "registry:component",
       "dependencies": [
-        "button",
-        "card",
         "lucide-react"
       ],
       "registryDependencies": [
+        "button",
+        "card",
         "@craft/input-error",
         "@craft/use-clipboard"
       ],
@@ -1004,14 +1005,15 @@
       "name": "two-factor-setup-modal",
       "type": "registry:component",
       "dependencies": [
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
         "button",
         "dialog",
         "input",
         "input-otp",
         "label",
-        "lucide-react"
-      ],
-      "registryDependencies": [
         "@craft/input-error",
         "@craft/use-clipboard",
         "@craft/use-appearance"
@@ -1027,11 +1029,10 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "two-factor-section",
       "type": "registry:component",
-      "dependencies": [
-        "button",
-        "separator"
-      ],
+      "dependencies": [],
       "registryDependencies": [
+        "button",
+        "separator",
         "@craft/heading",
         "@craft/two-factor-setup-modal",
         "@craft/two-factor-recovery-codes"
@@ -1047,13 +1048,12 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "settings-profile",
       "type": "registry:block",
-      "dependencies": [
+      "dependencies": [],
+      "registryDependencies": [
         "button",
         "input",
         "label",
-        "separator"
-      ],
-      "registryDependencies": [
+        "separator",
         "@craft/delete-user",
         "@craft/heading",
         "@craft/input-error",
@@ -1072,12 +1072,11 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "settings-security",
       "type": "registry:block",
-      "dependencies": [
+      "dependencies": [],
+      "registryDependencies": [
         "button",
         "label",
-        "separator"
-      ],
-      "registryDependencies": [
+        "separator",
         "@craft/heading",
         "@craft/input-error",
         "@craft/password-input",
