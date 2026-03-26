@@ -82,12 +82,13 @@ export async function getPlugins(
         const { wayfinder } = await importFromConsumer(
             "@laravel/vite-plugin-wayfinder",
         );
+        const wayfinderOptions =
+            typeof options.wayfinder === "object" ? options.wayfinder : {};
         plugins.push(
-            wayfinder(
-                typeof options.wayfinder === "object"
-                    ? options.wayfinder
-                    : undefined,
-            ),
+            wayfinder({
+                formVariants: true,
+                ...wayfinderOptions,
+            }),
         );
     }
 
