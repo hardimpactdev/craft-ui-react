@@ -74,7 +74,7 @@ export function mountAgentation() {
 
 const INIT_CODE = `
 import { mountAgentation } from "virtual:craft-agentation";
-if (import.meta.env.DEV && typeof window !== "undefined") {
+if (typeof window !== "undefined") {
     mountAgentation();
 }
 `;
