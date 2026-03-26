@@ -593,7 +593,7 @@
         {
           "path": "registry/craft/pages/auth/login.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/login.tsx"
+          "target": "resources/js/components/pages/auth/login.tsx"
         }
       ]
     },
@@ -618,7 +618,7 @@
         {
           "path": "registry/craft/pages/auth/register.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/register.tsx"
+          "target": "resources/js/components/pages/auth/register.tsx"
         }
       ]
     },
@@ -642,7 +642,7 @@
         {
           "path": "registry/craft/pages/auth/forgot-password.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/forgot-password.tsx"
+          "target": "resources/js/components/pages/auth/forgot-password.tsx"
         }
       ]
     },
@@ -666,7 +666,7 @@
         {
           "path": "registry/craft/pages/auth/reset-password.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/reset-password.tsx"
+          "target": "resources/js/components/pages/auth/reset-password.tsx"
         }
       ]
     },
@@ -689,7 +689,7 @@
         {
           "path": "registry/craft/pages/auth/confirm-password.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/confirm-password.tsx"
+          "target": "resources/js/components/pages/auth/confirm-password.tsx"
         }
       ]
     },
@@ -710,7 +710,7 @@
         {
           "path": "registry/craft/pages/auth/verify-email.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/verify-email.tsx"
+          "target": "resources/js/components/pages/auth/verify-email.tsx"
         }
       ]
     },
@@ -733,7 +733,7 @@
         {
           "path": "registry/craft/pages/auth/two-factor-challenge.tsx",
           "type": "registry:block",
-          "target": "components/pages/auth/two-factor-challenge.tsx"
+          "target": "resources/js/components/pages/auth/two-factor-challenge.tsx"
         }
       ]
     },
@@ -752,7 +752,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/Login.tsx",
           "type": "registry:block",
-          "target": "pages/auth/Login.tsx"
+          "target": "resources/js/pages/auth/Login.tsx"
         }
       ]
     },
@@ -771,7 +771,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/Register.tsx",
           "type": "registry:block",
-          "target": "pages/auth/Register.tsx"
+          "target": "resources/js/pages/auth/Register.tsx"
         }
       ]
     },
@@ -790,7 +790,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/ForgotPassword.tsx",
           "type": "registry:block",
-          "target": "pages/auth/ForgotPassword.tsx"
+          "target": "resources/js/pages/auth/ForgotPassword.tsx"
         }
       ]
     },
@@ -809,7 +809,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/ResetPassword.tsx",
           "type": "registry:block",
-          "target": "pages/auth/ResetPassword.tsx"
+          "target": "resources/js/pages/auth/ResetPassword.tsx"
         }
       ]
     },
@@ -828,7 +828,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/ConfirmPassword.tsx",
           "type": "registry:block",
-          "target": "pages/auth/ConfirmPassword.tsx"
+          "target": "resources/js/pages/auth/ConfirmPassword.tsx"
         }
       ]
     },
@@ -846,7 +846,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/VerifyEmail.tsx",
           "type": "registry:block",
-          "target": "pages/auth/VerifyEmail.tsx"
+          "target": "resources/js/pages/auth/VerifyEmail.tsx"
         }
       ]
     },
@@ -865,7 +865,7 @@
         {
           "path": "registry/craft/pages/auth/wrappers/TwoFactorChallenge.tsx",
           "type": "registry:block",
-          "target": "pages/auth/TwoFactorChallenge.tsx"
+          "target": "resources/js/pages/auth/TwoFactorChallenge.tsx"
         }
       ]
     },
@@ -1037,7 +1037,7 @@
         {
           "path": "registry/craft/pages/settings/profile.tsx",
           "type": "registry:block",
-          "target": "components/pages/settings/profile.tsx"
+          "target": "resources/js/components/pages/settings/profile.tsx"
         }
       ]
     },
@@ -1061,7 +1061,7 @@
         {
           "path": "registry/craft/pages/settings/security.tsx",
           "type": "registry:block",
-          "target": "components/pages/settings/security.tsx"
+          "target": "resources/js/components/pages/settings/security.tsx"
         }
       ]
     },
@@ -1078,7 +1078,7 @@
         {
           "path": "registry/craft/pages/settings/appearance.tsx",
           "type": "registry:block",
-          "target": "components/pages/settings/appearance.tsx"
+          "target": "resources/js/components/pages/settings/appearance.tsx"
         }
       ]
     },
@@ -1092,7 +1092,7 @@
         {
           "path": "registry/craft/hooks/use-two-factor-auth.ts",
           "type": "registry:hook",
-          "target": "hooks/use-two-factor-auth.ts"
+          "target": "resources/js/hooks/use-two-factor-auth.ts"
         }
       ]
     },
@@ -1108,7 +1108,7 @@
         {
           "path": "registry/craft/types/inertia.d.ts",
           "type": "registry:lib",
-          "target": "types/inertia.d.ts"
+          "target": "resources/js/types/inertia.d.ts"
         }
       ]
     },
@@ -1127,7 +1127,7 @@
         {
           "path": "registry/craft/pages/settings/wrappers/Profile.tsx",
           "type": "registry:block",
-          "target": "pages/settings/Profile.tsx"
+          "target": "resources/js/pages/settings/Profile.tsx"
         }
       ]
     },
@@ -1147,7 +1147,7 @@
         {
           "path": "registry/craft/pages/settings/wrappers/Security.tsx",
           "type": "registry:block",
-          "target": "pages/settings/Security.tsx"
+          "target": "resources/js/pages/settings/Security.tsx"
         }
       ]
     },
@@ -1165,7 +1165,7 @@
         {
           "path": "registry/craft/pages/settings/wrappers/Appearance.tsx",
           "type": "registry:block",
-          "target": "pages/settings/Appearance.tsx"
+          "target": "resources/js/pages/settings/Appearance.tsx"
         }
       ]
     },
@@ -1205,7 +1205,7 @@
         {
           "path": "registry/craft/pages/wrappers/Dashboard.tsx",
           "type": "registry:block",
-          "target": "pages/Dashboard.tsx"
+          "target": "resources/js/pages/Dashboard.tsx"
         }
       ]
     },
@@ -1223,7 +1223,7 @@
         {
           "path": "registry/craft/pages/dashboard.tsx",
           "type": "registry:block",
-          "target": "components/pages/dashboard.tsx"
+          "target": "resources/js/components/pages/dashboard.tsx"
         }
       ]
     }
