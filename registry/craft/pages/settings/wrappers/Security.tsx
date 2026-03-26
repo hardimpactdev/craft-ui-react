@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { useTwoFactorAuth } from '../../hooks/use-two-factor-auth';
 import { edit } from '../../routes/security';
-import { disable, enable } from '../../routes/two-factor';
+import { confirm, disable, enable } from '../../routes/two-factor';
 
 type Props = {
     canManageTwoFactor?: boolean;
@@ -247,6 +247,7 @@ export default function Security({
                         clearSetupData={clearSetupData}
                         fetchSetupData={fetchSetupData}
                         errors={errors}
+                        confirmUrl={confirm.url()}
                     />
                 </div>
             )}
