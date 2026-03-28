@@ -3,6 +3,7 @@ import { pathToFileURL } from "node:url";
 import { join } from "node:path";
 import type { PluginOption } from "vite-plus";
 import type { CraftConfigOptions } from "./types.ts";
+import { ssrOriginPlugin } from "./server.ts";
 
 /**
  * Import a package from the consumer project's node_modules.
@@ -58,6 +59,7 @@ export async function getPlugins(
     ]);
 
     const plugins: PluginOption[] = [
+        ssrOriginPlugin(),
         laravel({
             input: options.laravel?.input ?? ["resources/js/app.tsx"],
             ssr: options.laravel?.ssr,

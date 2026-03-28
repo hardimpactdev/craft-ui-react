@@ -6,7 +6,7 @@ import type { CraftConfigOptions } from "./types.ts";
 
 export type { CraftConfigOptions } from "./types.ts";
 export { getPlugins } from "./plugins.ts";
-export { getServerConfig } from "./server.ts";
+export { getServerConfig, ssrOriginPlugin } from "./server.ts";
 
 /**
  * Create a complete Vite config for a Craft React app.
