@@ -1,6 +1,6 @@
 {
   "name": "@hardimpactdev/craft-ui-react",
-  "version": "0.0.1",
+  "version": "0.0.19",
   "description": "A React component library and Vite toolchain for building Laravel + React + Inertia apps. Built on Base UI and shadcn with Agentation integration.",
   "author": "Hard Impact <hello@hardimpact.dev>",
   "license": "MIT",
