@@ -17,12 +17,18 @@ export function getServerConfig(mode: string): ServerOptions {
         const appCert = `${certsPath}/apps/${url.hostname}.crt`;
         const appKey = `${certsPath}/apps/${url.hostname}.key`;
 
+        const hasOrbitCerts = existsSync(appCert);
+
         return {
             host: url.hostname,
-            hmr: { host: url.hostname },
-            https: existsSync(appCert)
+            hmr: {
+                host: url.hostname,
+                ...(hasOrbitCerts ? { clientPort: 443 } : {}),
+            },
+            https: hasOrbitCerts
                 ? { key: readFileSync(appKey), cert: readFileSync(appCert) }
                 : undefined,
+            ...(hasOrbitCerts ? { origin: appUrl } : {}),
         };
     } catch {
         return { host: "0.0.0.0" };
