@@ -19,11 +19,12 @@ export { getServerConfig, ssrOriginPlugin } from "./server.ts";
  * export default defineCraftConfig();
  */
 export async function defineCraftConfig(options: CraftConfigOptions = {}) {
-    const { lint, ...craftOptions } = options;
+    const { lint, staged, ...craftOptions } = options;
     const plugins = await getPlugins(craftOptions);
 
     return defineConfig(({ mode }) => ({
         ...(lint ? { lint } : {}),
+        staged: staged ?? { "*": "vp check --fix" },
         plugins,
         server: getServerConfig(mode),
     } as UserConfig));

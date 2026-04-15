@@ -68,4 +68,11 @@ export interface CraftConfigOptions {
             typeCheck?: boolean;
         };
     };
+
+    /**
+     * VitePlus staged command map for pre-commit hooks. Keys are glob patterns,
+     * values are the shell command to run on matching staged files. Defaults
+     * to `{ "*": "vp check --fix" }` — override to customize.
+     */
+    staged?: Record<string, string>;
 }
