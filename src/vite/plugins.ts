@@ -22,14 +22,11 @@ async function importFromConsumer(pkg: string) {
     const subpath = parts.slice(1).join("/");
 
     if (subpath) {
-        // Direct file import — resolve from node_modules
         const filePath = join(nodeModules, pkgName, subpath);
-        // Try with .js extension if no extension provided
         const resolved = existsSync(filePath) ? filePath : `${filePath}.js`;
         return import(pathToFileURL(resolved).href);
     }
 
-    // Package root import — read package.json for entry point
     const pkgDir = join(nodeModules, pkgName);
     const pkgJson = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf-8"));
     const exports = pkgJson.exports?.["."];
@@ -58,18 +55,25 @@ export async function getPlugins(
         importFromConsumer("@tailwindcss/vite"),
     ]);
 
+    // When VITE_APP_URL is set we're running behind orbit's Caddy reverse
+    // proxy. Caddy terminates TLS; Vite stays on plain HTTP loopback. Pass
+    // `detectTls: false` so laravel-vite-plugin's Herd/Valet auto-detection
+    // doesn't force Vite into HTTPS mode (which would break the proxy upstream).
+    const runningBehindProxy =
+        typeof process.env.VITE_APP_URL === "string" && process.env.VITE_APP_URL !== "";
+
     const plugins: PluginOption[] = [
         ssrOriginPlugin(),
         laravel({
             input: options.laravel?.input ?? ["resources/js/app.tsx"],
             ssr: options.laravel?.ssr,
             refresh: options.laravel?.refresh ?? true,
+            ...(runningBehindProxy ? { detectTls: false } : {}),
         }),
         react(options.react),
         tailwindcss(),
     ];
 
-    // Inertia plugin (opt-out with `inertia: false`)
     if (options.inertia !== false) {
         const { default: inertia } = await importFromConsumer("@inertiajs/vite");
         plugins.push(
@@ -79,7 +83,6 @@ export async function getPlugins(
         );
     }
 
-    // Wayfinder plugin (opt-out with `wayfinder: false`)
     if (options.wayfinder !== false) {
         const { wayfinder } = await importFromConsumer(
             "@laravel/vite-plugin-wayfinder",
@@ -94,25 +97,21 @@ export async function getPlugins(
         );
     }
 
-    // i18n (opt-in with `i18n: true` or `i18n: { locale: 'nl' }`)
     if (options.i18n) {
         const { craftI18nPlugin } = await import("./i18n-plugin.ts");
         plugins.push(craftI18nPlugin(options.i18n));
     }
 
-    // Agentation (enabled by default, opt-out with `agentation: false`)
     if (options.agentation !== false) {
         const { craftAgentationPlugin } = await import("./agentation-plugin.ts");
         plugins.push(craftAgentationPlugin());
     }
 
-    // Artisan runners (dev only)
     const runners = await getArtisanRunners();
     if (runners) {
         plugins.push(runners);
     }
 
-    // User's additional plugins
     if (options.plugins) {
         plugins.push(...options.plugins);
     }
@@ -120,9 +119,6 @@ export async function getPlugins(
     return plugins;
 }
 
-/**
- * Auto-run artisan commands on file changes during development
- */
 async function getArtisanRunners(): Promise<PluginOption | null> {
     if (process.env.NODE_ENV !== "development") {
         return null;

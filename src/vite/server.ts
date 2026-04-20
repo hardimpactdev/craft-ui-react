@@ -1,38 +1,41 @@
-import { existsSync, readFileSync } from "node:fs";
-import { homedir } from "node:os";
 import { loadEnv } from "vite-plus";
 import type { PluginOption, ServerOptions } from "vite-plus";
 
+/**
+ * Produce a Vite `server` config that works identically on:
+ *
+ *   - Laravel Herd / Valet (dev-machine == browsing-machine): Vite serves
+ *     HTTPS locally via Herd/Valet's cert — configured by laravel-vite-plugin's
+ *     `detectTls` option, so this function returns `{ host: "127.0.0.1" }` and
+ *     stays out of the way.
+ *   - Orbit (dev-machine != browsing-machine): Caddy terminates TLS at the
+ *     workspace domain on :443 and proxies /@vite/*, /resources/*, HMR
+ *     websockets, etc. to plain HTTP on Vite's loopback port. Vite binds to
+ *     127.0.0.1 (no remote interface needed) and `server.origin` strips the
+ *     port from the hot file so emitted asset URLs go through Caddy.
+ *
+ * Orbit signals itself via `VITE_APP_URL=https://<workspace-domain>`. When
+ * unset (Herd/Valet/plain local), this helper does nothing opinionated.
+ */
 export function getServerConfig(mode: string): ServerOptions {
-    const env = loadEnv(mode, process.cwd());
+    const env = { ...process.env, ...loadEnv(mode, process.cwd()) };
     const appUrl = env.VITE_APP_URL;
 
     if (!appUrl) {
-        return { host: "0.0.0.0" };
+        return { host: "127.0.0.1" };
     }
 
-    try {
-        const url = new URL(appUrl);
-        const certsPath = `${homedir()}/.config/orbit/certs`;
-        const appCert = `${certsPath}/apps/${url.hostname}.crt`;
-        const appKey = `${certsPath}/apps/${url.hostname}.key`;
+    const url = new URL(appUrl);
 
-        const hasOrbitCerts = existsSync(appCert);
-
-        return {
+    return {
+        host: "127.0.0.1",
+        origin: appUrl,
+        hmr: {
             host: url.hostname,
-            hmr: {
-                host: url.hostname,
-                ...(hasOrbitCerts ? { clientPort: 443 } : {}),
-            },
-            https: hasOrbitCerts
-                ? { key: readFileSync(appKey), cert: readFileSync(appCert) }
-                : undefined,
-            ...(hasOrbitCerts ? { origin: appUrl } : {}),
-        };
-    } catch {
-        return { host: "0.0.0.0" };
-    }
+            protocol: "wss",
+            clientPort: 443,
+        },
+    };
 }
 
 /**
@@ -43,14 +46,15 @@ export function getServerConfig(mode: string): ServerOptions {
  * in a Proxy, making it impossible to reliably patch resolvedUrls.
  *
  * Instead, this plugin intercepts the SSR endpoint response and replaces
- * localhost URLs with the configured hostname.
+ * localhost URLs with the configured workspace origin.
  */
 export function ssrOriginPlugin(): PluginOption {
     return {
         name: "craft:ssr-origin",
         configureServer(server) {
-            const host = server.config.server.host;
-            if (!host || typeof host !== "string") return;
+            const origin = server.config.server.origin;
+            if (!origin || typeof origin !== "string") return;
+            const { hostname } = new URL(origin);
 
             server.middlewares.use("/__inertia_ssr", (req, res, next) => {
                 const originalWrite = res.write.bind(res);
@@ -60,16 +64,16 @@ export function ssrOriginPlugin(): PluginOption {
                 res.write = function (chunk: any, ...args: any[]) {
                     if (typeof chunk === "string") {
                         chunk = chunk.replace(
-                            /https?:\/\/localhost(:\d+)/g,
-                            `https://${host}$1`,
+                            /https?:\/\/localhost(:\d+)?/g,
+                            `https://${hostname}$1`,
                         );
                     } else if (Buffer.isBuffer(chunk)) {
                         const str = chunk.toString();
                         if (str.includes("localhost")) {
                             chunk = Buffer.from(
                                 str.replace(
-                                    /https?:\/\/localhost(:\d+)/g,
-                                    `https://${host}$1`,
+                                    /https?:\/\/localhost(:\d+)?/g,
+                                    `https://${hostname}$1`,
                                 ),
                             );
                         }
@@ -81,16 +85,16 @@ export function ssrOriginPlugin(): PluginOption {
                 res.end = function (chunk: any, ...args: any[]) {
                     if (typeof chunk === "string") {
                         chunk = chunk.replace(
-                            /https?:\/\/localhost(:\d+)/g,
-                            `https://${host}$1`,
+                            /https?:\/\/localhost(:\d+)?/g,
+                            `https://${hostname}$1`,
                         );
                     } else if (Buffer.isBuffer(chunk)) {
                         const str = chunk.toString();
                         if (str.includes("localhost")) {
                             chunk = Buffer.from(
                                 str.replace(
-                                    /https?:\/\/localhost(:\d+)/g,
-                                    `https://${host}$1`,
+                                    /https?:\/\/localhost(:\d+)?/g,
+                                    `https://${hostname}$1`,
                                 ),
                             );
                         }
