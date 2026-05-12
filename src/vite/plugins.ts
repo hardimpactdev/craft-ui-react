@@ -3,7 +3,6 @@ import { pathToFileURL } from "node:url";
 import { join } from "node:path";
 import type { PluginOption } from "vite-plus";
 import type { CraftConfigOptions } from "./types.ts";
-import { ssrOriginPlugin } from "./server.ts";
 
 /**
  * Import a package from the consumer project's node_modules.
@@ -55,20 +54,11 @@ export async function getPlugins(
         importFromConsumer("@tailwindcss/vite"),
     ]);
 
-    // When VITE_APP_URL is set we're running behind orbit's Caddy reverse
-    // proxy. Caddy terminates TLS; Vite stays on plain HTTP loopback. Pass
-    // `detectTls: false` so laravel-vite-plugin's Herd/Valet auto-detection
-    // doesn't force Vite into HTTPS mode (which would break the proxy upstream).
-    const runningBehindProxy =
-        typeof process.env.VITE_APP_URL === "string" && process.env.VITE_APP_URL !== "";
-
     const plugins: PluginOption[] = [
-        ssrOriginPlugin(),
         laravel({
             input: options.laravel?.input ?? ["resources/js/app.tsx"],
             ssr: options.laravel?.ssr,
             refresh: options.laravel?.refresh ?? true,
-            ...(runningBehindProxy ? { detectTls: false } : {}),
         }),
         react(options.react),
         tailwindcss(),
