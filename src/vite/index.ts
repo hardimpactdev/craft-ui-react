@@ -24,5 +24,14 @@ export async function defineCraftConfig(options: CraftConfigOptions = {}) {
         ...(lint ? { lint } : {}),
         staged: staged ?? { "*": "vp check --fix" },
         plugins,
+        server: {
+            watch: {
+                // Laravel vendor/ can contain recursive symlinks (e.g.
+                // orchestra/testbench-core laravel/vendor -> vendor) that crash
+                // the dev watcher with ELOOP once a path-repo package is
+                // symlinked in. vendor/ is never part of the Vite module graph.
+                ignored: ["**/vendor/**"],
+            },
+        },
     } as UserConfig));
 }

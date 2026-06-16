@@ -54,11 +54,21 @@ export async function getPlugins(
         importFromConsumer("@tailwindcss/vite"),
     ]);
 
+    // When VITE_APP_URL is set we are running behind orbit's dev proxy with
+    // an orbit-issued TLS cert (VITE_DEV_SERVER_KEY/CERT). Disable
+    // laravel-vite-plugin's Herd/Valet auto-detection so it does not bind the
+    // dev server to an unrelated valet host (e.g. <app>.beast) and emit asset /
+    // HMR URLs the app's CSP — scoped to the orbit domain — would block.
+    const runningBehindProxy =
+        typeof process.env.VITE_APP_URL === "string" &&
+        process.env.VITE_APP_URL !== "";
+
     const plugins: PluginOption[] = [
         laravel({
             input: options.laravel?.input ?? ["resources/js/app.tsx"],
             ssr: options.laravel?.ssr,
             refresh: options.laravel?.refresh ?? true,
+            ...(runningBehindProxy ? { detectTls: false } : {}),
         }),
         react(options.react),
         tailwindcss(),
