@@ -1,25 +1,20 @@
-import { Form } from '@inertiajs/react';
-import { REGEXP_ONLY_DIGITS } from 'input-otp';
-import { Check, Copy, LoaderCircle, ScanLine } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import InputError from '@/components/input-error';
-import { Button } from '@/components/ui/button';
+import { Form } from "@inertiajs/react";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { LoaderCircle, ScanLine } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import InputError from "@/components/input-error";
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from '@/components/ui/dialog';
-import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSlot,
-} from '@/components/ui/input-otp';
-import { useAppearance } from '@/hooks/use-appearance';
-import { useClipboard } from '@/hooks/use-clipboard';
-
-const OTP_MAX_LENGTH = 6;
+} from "@/components/ui/dialog";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { useAppearance } from "@/hooks/use-appearance";
+import { OTP_MAX_LENGTH } from "@/hooks/use-two-factor-auth";
+import { confirm } from "../routes/two-factor";
 
 function GridScanIcon() {
     return (
@@ -50,251 +45,173 @@ function GridScanIcon() {
 function TwoFactorSetupStep({
     qrCodeSvg,
     manualSetupKey,
-    buttonText,
-    onNextStep,
+    recoveryCodesList,
+    onConfirmed,
     errors,
 }: {
     qrCodeSvg: string | null;
     manualSetupKey: string | null;
-    buttonText: string;
-    onNextStep: () => void;
+    recoveryCodesList: string[];
+    onConfirmed: () => void;
     errors: string[];
 }) {
     const { resolvedAppearance } = useAppearance();
-    const [copiedText, copy] = useClipboard();
-    const IconComponent = copiedText === manualSetupKey ? Check : Copy;
+    const [code, setCode] = useState<string>("");
+    const pinInputContainerRef = useRef<HTMLDivElement>(null);
 
     return (
         <>
             {errors?.length ? (
                 <div className="w-full rounded-lg border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive">
-                    {errors.map((error, i) => (
-                        <p key={i}>{error}</p>
+                    {errors.map((error, index) => (
+                        <p key={index}>{error}</p>
                     ))}
                 </div>
             ) : (
-                <>
-                    <div className="mx-auto flex max-w-md overflow-hidden">
-                        <div className="mx-auto aspect-square w-64 rounded-lg border border-border">
-                            <div className="z-10 flex h-full w-full items-center justify-center p-5">
-                                {qrCodeSvg ? (
-                                    <div
-                                        className="aspect-square w-full rounded-lg bg-white p-2 [&_svg]:size-full"
-                                        dangerouslySetInnerHTML={{
-                                            __html: qrCodeSvg,
-                                        }}
-                                        style={{
-                                            filter:
-                                                resolvedAppearance === 'dark'
-                                                    ? 'invert(1) brightness(1.5)'
-                                                    : undefined,
-                                        }}
-                                    />
-                                ) : (
-                                    <LoaderCircle className="size-6 animate-spin" />
-                                )}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex w-full space-x-5">
-                        <Button type="button" className="w-full" onClick={onNextStep}>
-                            {buttonText}
-                        </Button>
-                    </div>
-
-                    <div className="relative flex w-full items-center justify-center">
-                        <div className="absolute inset-0 top-1/2 h-px w-full bg-border" />
-                        <span className="relative bg-card px-2 py-1">
-                            or, enter the code manually
-                        </span>
-                    </div>
-
-                    <div className="flex w-full space-x-2">
-                        <div className="flex w-full items-stretch overflow-hidden rounded-xl border border-border">
-                            {!manualSetupKey ? (
-                                <div className="flex h-full w-full items-center justify-center bg-muted p-3">
-                                    <LoaderCircle className="size-4 animate-spin" />
-                                </div>
-                            ) : (
-                                <>
-                                    <input
-                                        type="text"
-                                        readOnly
-                                        value={manualSetupKey}
-                                        className="h-full w-full bg-background p-3 text-foreground outline-none"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => copy(manualSetupKey)}
-                                        className="border-l border-border px-3 hover:bg-muted"
-                                    >
-                                        <IconComponent className="w-4" />
-                                    </button>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                </>
-            )}
-        </>
-    );
-}
-
-function TwoFactorVerificationStep({
-    confirmUrl,
-    onClose,
-    onBack,
-}: {
-    confirmUrl: string;
-    onClose: () => void;
-    onBack: () => void;
-}) {
-    const [code, setCode] = useState<string>('');
-    const pinInputContainerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        setTimeout(() => {
-            pinInputContainerRef.current?.querySelector('input')?.focus();
-        }, 0);
-    }, []);
-
-    return (
-        <Form
-            action={confirmUrl}
-            method="post"
-            onSuccess={() => onClose()}
-            resetOnError
-            resetOnSuccess
-        >
-            {({
-                processing,
-                errors,
-            }: {
-                processing: boolean;
-                errors?: { confirmTwoFactorAuthentication?: { code?: string } };
-            }) => (
-                <>
-                    <div
-                        ref={pinInputContainerRef}
-                        className="relative w-full space-y-3"
-                    >
-                        <div className="flex w-full flex-col items-center space-y-3 py-2">
-                            <InputOTP
-                                id="otp"
-                                name="code"
-                                maxLength={OTP_MAX_LENGTH}
-                                onChange={setCode}
-                                disabled={processing}
-                                pattern={REGEXP_ONLY_DIGITS}
-                            >
-                                <InputOTPGroup>
-                                    {Array.from(
-                                        { length: OTP_MAX_LENGTH },
-                                        (_, index) => (
-                                            <InputOTPSlot
-                                                key={index}
-                                                index={index}
+                <Form
+                    action={confirm()}
+                    className="w-full"
+                    onSuccess={() => onConfirmed()}
+                    resetOnError
+                    resetOnSuccess
+                >
+                    {({
+                        processing,
+                        errors: formErrors,
+                    }: {
+                        processing: boolean;
+                        errors?: { confirmTwoFactorAuthentication?: { code?: string } };
+                    }) => (
+                        <div className="space-y-5">
+                            <div className="mx-auto flex max-w-md overflow-hidden">
+                                <div className="mx-auto aspect-square w-64 rounded-lg border border-border">
+                                    <div className="z-10 flex h-full w-full items-center justify-center p-5">
+                                        {qrCodeSvg ? (
+                                            <div
+                                                className="aspect-square w-full rounded-lg bg-white p-2 [&_svg]:size-full"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: qrCodeSvg,
+                                                }}
+                                                style={{
+                                                    filter:
+                                                        resolvedAppearance === "dark"
+                                                            ? "invert(1) brightness(1.5)"
+                                                            : undefined,
+                                                }}
                                             />
-                                        ),
-                                    )}
-                                </InputOTPGroup>
-                            </InputOTP>
-                            <InputError
-                                message={
-                                    errors?.confirmTwoFactorAuthentication?.code
-                                }
-                            />
-                        </div>
+                                        ) : (
+                                            <LoaderCircle className="size-4 animate-spin" />
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div className="flex w-full space-x-5">
-                            <Button
-                                type="button"
-                                variant="outline"
-                                className="flex-1"
-                                onClick={onBack}
-                                disabled={processing}
-                            >
-                                Back
-                            </Button>
+                            <div className="space-y-2">
+                                <label
+                                    htmlFor="two-factor-secret-key"
+                                    className="text-sm font-medium leading-none"
+                                >
+                                    Secret key
+                                </label>
+                                <input
+                                    id="two-factor-secret-key"
+                                    type="text"
+                                    disabled
+                                    value={manualSetupKey ?? ""}
+                                    className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-muted-foreground shadow-xs"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <p className="text-sm font-medium leading-none">Recovery codes</p>
+                                <pre className="min-h-32 whitespace-pre-wrap rounded-md border border-border bg-muted/50 px-4 py-3 font-mono text-sm leading-7 text-foreground">
+                                    {recoveryCodesList.length
+                                        ? recoveryCodesList.join("\n")
+                                        : "Loading recovery codes..."}
+                                </pre>
+                            </div>
+
+                            <div ref={pinInputContainerRef} className="space-y-2">
+                                <label htmlFor="otp" className="text-sm font-medium leading-none">
+                                    Authentication code
+                                </label>
+                                <InputOTP
+                                    id="otp"
+                                    name="code"
+                                    maxLength={OTP_MAX_LENGTH}
+                                    onChange={setCode}
+                                    disabled={processing}
+                                    pattern={REGEXP_ONLY_DIGITS}
+                                    autoFocus
+                                >
+                                    <InputOTPGroup>
+                                        {Array.from({ length: OTP_MAX_LENGTH }, (_, index) => (
+                                            <InputOTPSlot key={index} index={index} />
+                                        ))}
+                                    </InputOTPGroup>
+                                </InputOTP>
+                                <InputError
+                                    message={formErrors?.confirmTwoFactorAuthentication?.code}
+                                />
+                            </div>
+
                             <Button
                                 type="submit"
-                                className="flex-1"
-                                disabled={
-                                    processing || code.length < OTP_MAX_LENGTH
-                                }
+                                className="w-full"
+                                disabled={processing || code.length < OTP_MAX_LENGTH}
                             >
-                                Confirm
+                                Confirm 2FA
                             </Button>
                         </div>
-                    </div>
-                </>
+                    )}
+                </Form>
             )}
-        </Form>
+        </>
     );
 }
 
 type Props = {
     isOpen: boolean;
     onClose: () => void;
-    requiresConfirmation: boolean;
     twoFactorEnabled: boolean;
     qrCodeSvg: string | null;
     manualSetupKey: string | null;
+    recoveryCodesList: string[];
     clearSetupData: () => void;
     fetchSetupData: () => Promise<void>;
     errors: string[];
-    confirmUrl: string;
 };
 
 export default function TwoFactorSetupModal({
     isOpen,
     onClose,
-    requiresConfirmation,
     twoFactorEnabled,
     qrCodeSvg,
     manualSetupKey,
+    recoveryCodesList,
     clearSetupData,
     fetchSetupData,
     errors,
-    confirmUrl,
 }: Props) {
-    const [showVerificationStep, setShowVerificationStep] =
-        useState<boolean>(false);
-
     const modalConfig = useMemo<{
         title: string;
         description: string;
-        buttonText: string;
     }>(() => {
         if (twoFactorEnabled) {
             return {
-                title: 'Two-factor authentication enabled',
-                description:
-                    'Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.',
-                buttonText: 'Close',
-            };
-        }
-
-        if (showVerificationStep) {
-            return {
-                title: 'Verify authentication code',
-                description:
-                    'Enter the 6-digit code from your authenticator app',
-                buttonText: 'Continue',
+                title: "Two-factor authentication enabled",
+                description: "Two-factor authentication is now enabled for your account.",
             };
         }
 
         return {
-            title: 'Enable two-factor authentication',
+            title: "Set up 2FA",
             description:
-                'To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app',
-            buttonText: 'Continue',
+                "Scan the QR code with your authenticator app, save the recovery codes, then enter the generated code to finish setup.",
         };
-    }, [twoFactorEnabled, showVerificationStep]);
+    }, [twoFactorEnabled]);
 
     const resetModalState = useCallback(() => {
-        setShowVerificationStep(false);
         clearSetupData();
     }, [clearSetupData]);
 
@@ -302,14 +219,6 @@ export default function TwoFactorSetupModal({
         resetModalState();
         onClose();
     }, [onClose, resetModalState]);
-
-    const handleModalNextStep = useCallback(() => {
-        if (requiresConfirmation) {
-            setShowVerificationStep(true);
-            return;
-        }
-        handleClose();
-    }, [requiresConfirmation, handleClose]);
 
     const fetchSetupDataRef = useRef(fetchSetupData);
 
@@ -335,21 +244,13 @@ export default function TwoFactorSetupModal({
                 </DialogHeader>
 
                 <div className="flex flex-col items-center space-y-5">
-                    {showVerificationStep ? (
-                        <TwoFactorVerificationStep
-                            confirmUrl={confirmUrl}
-                            onClose={handleClose}
-                            onBack={() => setShowVerificationStep(false)}
-                        />
-                    ) : (
-                        <TwoFactorSetupStep
-                            qrCodeSvg={qrCodeSvg}
-                            manualSetupKey={manualSetupKey}
-                            buttonText={modalConfig.buttonText}
-                            onNextStep={handleModalNextStep}
-                            errors={errors}
-                        />
-                    )}
+                    <TwoFactorSetupStep
+                        qrCodeSvg={qrCodeSvg}
+                        manualSetupKey={manualSetupKey}
+                        recoveryCodesList={recoveryCodesList}
+                        onConfirmed={handleClose}
+                        errors={errors}
+                    />
                 </div>
             </DialogContent>
         </Dialog>

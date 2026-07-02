@@ -1,29 +1,28 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useCallback, useState } from 'react';
 import Heading from '@/components/heading';
-import TwoFactorRecoveryCodes from '@/components/two-factor-recovery-codes';
 import TwoFactorSetupModal from '@/components/two-factor-setup-modal';
+import { Button } from '@/components/ui/button';
 import type { TwoFactorSectionProps } from '@/pages/settings/types';
 
 export default function TwoFactorSection(props: TwoFactorSectionProps) {
     const {
         enabled,
-        qrCodeSvg,
-        manualSetupKey,
-        recoveryCodes,
-        confirmationRequired,
+        qrCodeSvg = null,
+        manualSetupKey = null,
+        recoveryCodes = [],
         errors,
         processing,
         onEnable,
-        onConfirm,
         onDisable,
-        onRegenerateCodes,
-        onFetchRecoveryCodes,
         onFetchSetupData,
     } = props;
 
     const [open, setOpen] = useState(false);
-    const [recoveryVisible, setRecoveryVisible] = useState(false);
+    const errorMessages = errors ? Object.values(errors) : [];
+
+    const fetchSetupData = useCallback(async () => {
+        onFetchSetupData?.();
+    }, [onFetchSetupData]);
 
     return (
         <section className="space-y-4 rounded-xl border p-4">
@@ -36,50 +35,31 @@ export default function TwoFactorSection(props: TwoFactorSectionProps) {
             </p>
 
             {enabled ? (
-                <div className="space-y-4">
-                    <TwoFactorRecoveryCodes
-                        codes={recoveryCodes}
-                        visible={recoveryVisible}
-                        onToggleVisibility={() => {
-                            const next = !recoveryVisible;
-                            setRecoveryVisible(next);
-
-                            if (next) {
-                                onFetchRecoveryCodes?.();
-                            }
-                        }}
-                        onFetchCodes={onFetchRecoveryCodes}
-                        onRegenerate={onRegenerateCodes}
-                        processing={processing}
-                        errors={errors}
-                    />
-
-                    <div className="flex flex-wrap gap-2">
-                        <Button onClick={() => setOpen(true)} variant="outline">
-                            Configure authenticator
-                        </Button>
-                        <Button onClick={onDisable} variant="destructive" disabled={processing}>
-                            Disable
-                        </Button>
-                    </div>
-                </div>
+                <Button onClick={onDisable} variant="destructive" disabled={processing}>
+                    Disable 2FA
+                </Button>
             ) : (
-                <Button onClick={() => setOpen(true)}>
-                    Enable two-factor authentication
+                <Button
+                    onClick={() => {
+                        onEnable?.();
+                        setOpen(true);
+                    }}
+                    disabled={processing}
+                >
+                    Enable 2FA
                 </Button>
             )}
 
             <TwoFactorSetupModal
-                open={open}
-                onOpenChange={setOpen}
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                twoFactorEnabled={enabled}
                 qrCodeSvg={qrCodeSvg}
                 manualSetupKey={manualSetupKey}
-                confirmationRequired={confirmationRequired}
-                errors={typeof errors === 'object' ? errors : undefined}
-                processing={processing}
-                onEnable={onEnable}
-                onConfirm={onConfirm}
-                onFetchSetupData={onFetchSetupData}
+                recoveryCodesList={recoveryCodes}
+                clearSetupData={() => {}}
+                fetchSetupData={fetchSetupData}
+                errors={errorMessages}
             />
         </section>
     );

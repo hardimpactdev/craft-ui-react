@@ -846,17 +846,36 @@
       "registryDependencies": [
         "button",
         "dialog",
-        "input",
         "input-otp",
-        "label",
         "@craft/input-error",
-        "@craft/use-clipboard",
         "@craft/use-appearance"
       ],
       "files": [
         {
           "path": "registry/craft/components/two-factor-setup-modal.tsx",
           "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "manage-two-factor",
+      "type": "registry:component",
+      "dependencies": [
+        "@inertiajs/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "@craft/heading",
+        "@craft/two-factor-setup-modal",
+        "@craft/use-two-factor-auth"
+      ],
+      "files": [
+        {
+          "path": "registry/craft/components/manage-two-factor.tsx",
+          "type": "registry:component",
+          "target": "resources/js/components/manage-two-factor.tsx"
         }
       ]
     },
@@ -927,10 +946,8 @@
         "label",
         "@craft/heading",
         "@craft/input-error",
+        "@craft/manage-two-factor",
         "@craft/password-input",
-        "@craft/two-factor-recovery-codes",
-        "@craft/two-factor-setup-modal",
-        "@craft/use-two-factor-auth",
         "@craft/inertia-types"
       ],
       "files": [
