@@ -48,27 +48,42 @@ export function mountAgentation() {
     injectStyles();
 
     let count = readAnnotationCount();
+    let loaded = false;
+
+    // The runtime is heavy (agentation + a second react-dom root), so it only
+    // loads once the toolbar proves it is on the page — via its request-state
+    // event, or via its host element when the toolbar mounted first. Pages
+    // without the toolbar (production visitors) never download it.
+    function loadAgentation() {
+        if (loaded) return;
+        loaded = true;
+
+        import("agentation").then(({ Agentation }) => {
+            import("react-dom/client").then(({ createRoot }) => {
+                import("react/jsx-runtime").then(({ jsx }) => {
+                    const container = document.createElement("div");
+                    container.id = "agentation-root";
+                    document.body.appendChild(container);
+                    createRoot(container).render(
+                        jsx(Agentation, {
+                            onAnnotationAdd: () => syncCount(++count),
+                            onAnnotationDelete: () => syncCount(--count),
+                            onAnnotationsClear: () => { count = 0; syncCount(0); },
+                        }),
+                    );
+                });
+            });
+        });
+    }
 
     window.addEventListener("toolbar:agentation:request-state", () => {
         syncCount(count);
+        loadAgentation();
     });
 
-    import("agentation").then(({ Agentation }) => {
-        import("react-dom/client").then(({ createRoot }) => {
-            import("react/jsx-runtime").then(({ jsx }) => {
-                const container = document.createElement("div");
-                container.id = "agentation-root";
-                document.body.appendChild(container);
-                createRoot(container).render(
-                    jsx(Agentation, {
-                        onAnnotationAdd: () => syncCount(++count),
-                        onAnnotationDelete: () => syncCount(--count),
-                        onAnnotationsClear: () => { count = 0; syncCount(0); },
-                    }),
-                );
-            });
-        });
-    });
+    if (document.getElementById("laravel-toolbar-shadow-host")) {
+        loadAgentation();
+    }
 }
 `;
 
@@ -83,7 +98,9 @@ if (typeof window !== "undefined") {
  * Vite plugin that provides Agentation integration:
  * 1. A virtual module with mountAgentation()
  * 2. An alias so "@hardimpactdev/craft-ui-react/agentation" resolves to it
- * 3. Auto-injection of mountAgentation() into the app entry point (dev only)
+ * 3. Auto-injection of mountAgentation() into the app entry point. The
+ *    injected code is a lightweight listener; the agentation runtime itself
+ *    is only downloaded when the laravel-toolbar is present on the page.
  */
 export function craftAgentationPlugin(): Plugin {
     return {
